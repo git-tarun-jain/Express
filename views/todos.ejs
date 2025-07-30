@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Todos</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/todos.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="nav-menus">
+      <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/todos" class="active">Todos</a></li>
+        <li><a href="/products">Products</a></li>
+      </ul>
+    </div>
+    <h2>Todo Items</h2>
+
+    <div class="nav-links">
+      <a href="../add-todo">Add Todo</a>
+    </div>
+
+    <table class="todo-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Todo</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% todos.forEach((todo, index)=> { %>
+          <tr>
+            <td>
+              <%= index + 1 %>
+            </td>
+            <td>
+              <%= todo.todo %>
+            </td>
+            <td class="actions">
+              <a href="/edit-todo/<%= todo._id %>" class="edit-btn">Edit</a>
+              <a href="/delete-todo/<%= todo._id %>" class="delete-btn"
+                onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+          </tr>
+          <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>

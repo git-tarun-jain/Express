@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Product</title>
+  <link rel="stylesheet" href="/edit-product.css" />
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Edit Product</h2>
+    <form action="/edit-product/<%= product._id %>" method="POST" enctype="multipart/form-data">
+      <div class="input-group">
+        <input type="text" name="title" placeholder="Title" value="<%= product.title %>" required />
+      </div>
+      <div class="input-group">
+        <textarea name="excerpt" placeholder="Excerpt" required><%= product.excerpt %></textarea>
+      </div>
+      <div class="input-group">
+        <textarea name="content" placeholder="Content" required><%= product.content %></textarea>
+      </div>
+      <div class="input-group">
+        <input type="text" name="price" placeholder="Price" value="<%= product.price %>" required />
+      </div>
+      <div class="input-group">
+        <input type="text" name="sku" placeholder="SKU" value="<%= product.sku %>" required />
+      </div>
+      <div class="input-group">
+        <input type="file" name="image" accept="image/*" />
+        <% if (product.image) { %>
+          <img src="/<%= product.image %>" alt="<%= product.title %>">
+          <% } %>
+      </div>
+      <div class="input-group">
+        <input type="file" name="gallery" accept="image/*" multiple />
+        <% if (product.gallery) { %>
+          <div class="gallery-preview">
+            <% product.gallery.forEach(function(item) { %>
+              <img src="/<%= item.path %>" alt="<%= product.title %>">
+              <% }); %>
+          </div>
+          <% } %>
+      </div>
+      <button type="submit">Update Product</button>
+    </form>
+    <div class="nav-links">
+      <a href="/products">Back to Products</a>
+    </div>
+  </div>
+
+</body>
+
+</html>

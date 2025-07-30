@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Products</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/products.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="nav-menus">
+      <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/todos">Todos</a></li>
+        <li><a href="/products" class="active">Products</a></li>
+      </ul>
+    </div>
+    <h2>Our Products</h2>
+    <div class="nav-links">
+      <a href="/add-product">Add Product</a>
+    </div>
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>SKU</th>
+          <th>Price</th>
+          <th>Excerpt</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% products.forEach(product=> { %>
+          <tr>
+            <td><img src="/<%= product.image %>" alt="<%= product.title %>"></td>
+            <td>
+              <%= product.title %>
+            </td>
+            <td>
+              <%= product.sku %>
+            </td>
+            <td>₹<%= product.price %>
+            </td>
+            <td>
+              <%= product.excerpt %>
+            </td>
+            <td class="actions">
+              <a href="/edit-product/<%= product._id %>" class="edit-btn">Edit</a>
+              <a href="/delete-product/<%= product._id %>" class="delete-btn"
+                onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+          </tr>
+          <% }); %>
+      </tbody>
+    </table>
+
+
+  </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Todo</title>
+  <link rel="stylesheet" href="/edit-todo.css" />
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Edit Todo</h2>
+    <form action="/edit-todo/<%= todo._id %>" method="POST">
+      <div class="input-group">
+        <textarea name="todo" placeholder="Type here.." required><%= todo.todo %></textarea>
+      </div>
+      <button type="submit">Update Todo</button>
+    </form>
+    <div class="nav-links">
+      <a href="/todos">Back to Todos</a>
+    </div>
+  </div>
+
+</body>
+
+</html>
