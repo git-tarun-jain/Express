@@ -8,7 +8,7 @@ import session from 'express-session';
 import { addTodoPage, createTodo, deleteTodo, editTodoPage, updateTodo, viewTodos } from './controllers/todoController.js';
 import { registerUser, loginUser, welcomeUser, loginPage, registerPage, changePasswordPage, changePassword, logout } from './controllers/userController.js';
 import { contactPage, sendEmail } from './controllers/contactController.js';
-import { addProductPage, createProduct, deleteProduct, editProductPage, updateProduct, viewProduct, viewProducts } from './controllers/productController.js';
+import { addProductPage, createProduct, deleteGalleryImage, deleteProduct, editProductPage, updateProduct, viewProducts } from './controllers/productController.js';
 
 dotenv.config();
 const app = express();
@@ -70,11 +70,14 @@ app.post('/send-email', upload.single('attachment'), sendEmail);
 // Product
 app.get('/add-product', addProductPage);
 app.post('/add-product', productUpload, createProduct);
-app.get('/view-product/:id', viewProduct);
+//app.get('/view-product/:id', viewProduct);
 app.get('/edit-product/:id', editProductPage);
 app.post('/edit-product/:id', productUpload, updateProduct);
 app.post('/delete-product/:id', deleteProduct);
 app.get('/products', viewProducts);
+app.post('/remove-image/:id', deleteGalleryImage);
+
+
 
 // Start server
 app.listen(process.env.PORT, () => {

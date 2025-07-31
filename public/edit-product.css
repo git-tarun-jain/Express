@@ -67,7 +67,7 @@ h2 {
   padding: 0.5rem 0;
 }
 
-button[type="submit"] {
+.update-btn {
   background-color: #10b981;
   color: white;
   border: none;
@@ -79,7 +79,7 @@ button[type="submit"] {
   transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
+.update-btn:hover {
   background-color: #059669;
 }
 
@@ -101,14 +101,46 @@ button[type="submit"]:hover {
 .gallery-preview {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 32px;
   margin-top: 10px;
 }
 
-.gallery-preview img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid #e5e7eb;
+form .gallery-preview {
+  gap: 10px;
+}
+
+.gallery-image {
+  position: relative;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.image-wrapper img {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.delete-form {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 20px;
+  text-align: center;
+  padding: 0;
 }

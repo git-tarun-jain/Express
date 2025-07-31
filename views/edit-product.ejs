@@ -38,14 +38,31 @@
         <input type="file" name="gallery" accept="image/*" multiple />
         <% if (product.gallery) { %>
           <div class="gallery-preview">
-            <% product.gallery.forEach(function(item) { %>
-              <img src="/<%= item.path %>" alt="<%= product.title %>">
-              <% }); %>
+            <% product.gallery.forEach(function(item, index) { %>
+              <div class="gallery-image">
+                <img src="/<%= item.path %>" alt="<%= product.title %>">
+              </div>
+            <% }); %>
           </div>
-          <% } %>
+        <% } %>
       </div>
-      <button type="submit">Update Product</button>
+      <button type="submit" class="update-btn">Update Product</button>
     </form>
+    <% if (product.gallery) { %>
+      <div class="gallery-preview">
+        <% product.gallery.forEach(function(item) { %>
+          <div class="gallery-image">
+            <div class="image-wrapper">
+              <img src="/<%= item.path %>" alt="<%= product.title %>">
+              <form method="POST" action="/remove-image/<%= product._id %>" class="delete-form">
+                <input type="hidden" name="imagePath" value="<%= item.path %>">
+                <button type="submit" class="delete-btn" onclick="return confirm('Remove this image?')">✕</button>
+              </form>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } %>
     <div class="nav-links">
       <a href="/products">Back to Products</a>
     </div>
