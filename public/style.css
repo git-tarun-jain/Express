@@ -1,3 +1,16 @@
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
 .nav-menus ul {
   list-style: none;
   padding: 0;
