@@ -36,15 +36,6 @@
       </div>
       <div class="input-group">
         <input type="file" name="gallery" accept="image/*" multiple />
-        <% if (product.gallery) { %>
-          <div class="gallery-preview">
-            <% product.gallery.forEach(function(item, index) { %>
-              <div class="gallery-image">
-                <img src="/<%= item.path %>" alt="<%= product.title %>">
-              </div>
-            <% }); %>
-          </div>
-        <% } %>
       </div>
       <button type="submit" class="update-btn">Update Product</button>
     </form>

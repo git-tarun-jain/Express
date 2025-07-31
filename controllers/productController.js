@@ -22,10 +22,16 @@ export async function updateProduct(req, res) {
     const vpid = req.params.id;
     const product = await Product.findById(vpid);
     const imagepath = (req.files.image?.[0]?.path || product.image).replace(/\\/g, '/');
-    const formattedGallery = (req.files.gallery || product.gallery).map(file => ({
-        filename: file.filename,
-        path: (file.path).replace(/\\/g, '/')
-    }));
+    const productGallery = [
+        ...(product.gallery || []).map(file => ({
+            filename: file.filename,
+            path: file.path.replace(/\\/g, '/')
+        })),
+        ...(req.files.gallery || []).map(file => ({
+            filename: file.filename,
+            path: file.path.replace(/\\/g, '/')
+        }))
+    ];
     const updateProductData = {
         title,
         excerpt,
@@ -33,7 +39,7 @@ export async function updateProduct(req, res) {
         price,
         sku,
         image: imagepath,
-        gallery: formattedGallery
+        gallery: productGallery
     };
     await Product.findByIdAndUpdate(vpid, updateProductData);
     res.redirect('/products');
