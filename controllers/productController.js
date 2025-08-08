@@ -45,11 +45,11 @@ export async function updateProduct(req, res) {
     res.redirect('/products');
 }
 
-/*export async function viewProduct(req, res) {
+export async function viewProduct(req, res) {
     const vpid = req.params.id;
     const product = await Product.findById(vpid);
     res.render('product.ejs', { product });
-}*/
+}
 
 export async function viewProducts(req, res) {
     const products = await Product.find();

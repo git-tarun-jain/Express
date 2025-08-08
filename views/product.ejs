@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Product</title>
+  <link rel="stylesheet" href="/product.css" />
+</head>
+
+<body>
+<section class="sections">
+  <div class="container">
+    <div class="ctm_row">
+      <div class="col col_lg_6">
+        <div class="product-gallery">
+          <!-- Main Image -->
+          <div class="main-slider">
+            <div><img src="/<%= product.image %>" alt="Main Image"></div>
+            <% product.gallery.forEach(gimg => { %>
+              <div><img src="/<%= gimg.path %>" alt="Gallery Image"></div>
+            <% }) %>            
+          </div>
+          <!-- Thumbnails -->
+          <div class="thumb-wrapper">
+            <button class="nav-btn slick-prev">‹</button>
+            <div class="thumb-slider">
+              <div><img src="/<%= product.image %>" alt="Thumb"></div>
+              <% product.gallery.forEach(gimg => { %>
+                <div><img src="/<%= gimg.path %>" alt="Thumb"></div>
+              <% }) %>
+            </div>
+            <button class="nav-btn slick-next">›</button>
+          </div>
+        </div>
+      </div>
+      <div class="col col_lg_6">
+        <div class="product-content">
+          <h1><%= product.title %></h1>
+          <div class="price">$<%= product.price %></div>
+          <p><%= product.content %></p>
+          <form method="post" action="/add-to-cart">
+            <input type="hidden" name="productid" value="<%= product._id %>">
+            <input type="hidden" name="userid" value="<%= user._id %>">
+            <input type="number" name="productqty" min="1" placeholder="Quantity">
+            <button type="submit" class="btn btn-primary">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('.main-slider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.thumb-slider'
+      });
+
+      $('.thumb-slider').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        asNavFor: '.main-slider',
+        focusOnSelect: true,
+        prevArrow: $('.slick-prev'),
+        nextArrow: $('.slick-next')
+      });
+    });
+  </script>
+
+</body>
+
+</html>

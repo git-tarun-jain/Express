@@ -10,13 +10,14 @@
 
 <body>
   <div class="container">
+    <h2>Welcome, <%= user.fname %>
+        <%= user.lname %>
+    </h2>
     <div class="nav-menus">
       <ul>
         <li><a href="/dashboard">Dashboard</a></li>
         <li><a href="/todos" class="active">Todos</a></li>
         <li><a href="/products">Products</a></li>
-        <li><a href="../change-password/<%= id %>">Change Password</a></li>
-        <li><a href="/logout" class="logout-btn">Logout</a></li>
       </ul>
     </div>
     <h2>Todo Items</h2>

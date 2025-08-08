@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+}
+
+.product-gallery {
+  max-width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.main-slider img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+}
+
+.thumb-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.thumb-slider {
+  max-width: 500px;
+  display: flex;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.thumb-slider img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: 0.3s border;
+}
+
+.thumb-slider .slick-current img {
+  border-color: #007bff;
+}
+
+.nav-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  background-color: #0056b3;
+}
+
+.product-content {
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+.product-content h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.product-content .price {
+  font-size: 22px;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.product-content p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.ctm_row{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.col{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+@media (min-width: 768px) {
+    .col_md_6 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 992px) {
+    .col_lg_8 {
+        -ms-flex: 0 0 66.666667%;
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+    }
+    .col_lg_6{
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .col_lg_4 {
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}

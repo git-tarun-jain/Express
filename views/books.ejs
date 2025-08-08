@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Books </title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/books.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h2>Welcome, <%= user.fname %>
+        <%= user.lname %>
+    </h2>
+    <div class="nav-menus">
+      <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/todos">Todos</a></li>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/books" class="active">Books</a></li>
+      </ul>
+    </div>
+    <h2>Our Products</h2>
+    <% if(totalPages > 1) { %>
+      <div class="pagination-info">
+        Showing books <%= offset+1 %> - <%= currentPage*10 %> of <%= totalBooks %>
+      </div>
+    <% } %>
+    <div class="searchbooks">
+      <form method="POST" action="/search-book/">
+        <input type="text" placeholder="Keyword" name="keyword">
+        <input type="submit" value="Search">
+      </form>
+    </div>
+    <div class="nav-links">
+      <a href="/add-book">Add Book</a>
+    </div>
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Genre</th>
+          <th>Publisher</th>
+          <th>Author</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% books.forEach(book => { %>
+          <tr>
+            <td>
+              <%= book.title %>
+            </td>
+            <td>
+              <%= book.genre %>
+            </td>
+            <td>
+              <%= book.publisher %>
+            </td>
+            <td>
+              <%= book.author %>
+            </td>
+            <td class="actions">
+              <a href="/edit-book/<%= book._id %>" class="edit-btn">Edit</a>
+              <a href="/delete-book/<%= book._id %>" class="delete-btn"
+                onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+          </tr>
+          <% }); %>
+      </tbody>
+    </table>
+    <% if(totalPages > 1) { %>
+      <div class="pagination">
+        <% if (currentPage > 1) { %>
+          <a href="?page=<%= currentPage - 1 %>">&laquo;</a>
+        <% } %>
+
+        <% if (1 < currentPage - midSize) { %>
+          <a href="?page=1">1</a>
+          <span class="dots">...</span>
+        <% } %>
+
+        <% for (let i = currentPage - midSize; i <= currentPage + midSize; i++) { 
+            if (i > 0 && i <= totalPages) { %>
+          <a class="<%= i === currentPage ? 'active' : '' %>" href="?page=<%= i %>"><%= i %></a>
+        <% } } %>
+
+        <% if (totalPages > currentPage + midSize) { %>
+          <span class="dots">...</span>
+          <a href="?page=<%= totalPages %>"><%= totalPages %></a>
+        <% } %>
+
+        <% if (currentPage < totalPages) { %>
+          <a href="?page=<%= currentPage + 1 %>">&raquo;</a>
+        <% } %>
+      </div>
+    <% } %>
+
+  </div>
+
+
+</body>
+
+</html>
